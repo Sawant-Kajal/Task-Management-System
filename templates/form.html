@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-1">
+    <h2>{{ 'Edit Task' if task else 'Add Task' }}</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" name="title" required value="{{ task.title if task else '' }}">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required>{{ task.description if task else '' }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-check"></i> {{ 'Update Task' if task else 'Add Task' }}
+        </button>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
